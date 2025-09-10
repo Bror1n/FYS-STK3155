@@ -7,7 +7,7 @@ DATE: September 8-12, 2025
 
 After having completed these exercises you will have:
 o Your own code for the implementation of the simplest gradient descent approach applied to ordinary least squares (OLS) and Ridge regression
-o Be able to compare the analytical expressions for OLS and Rudge regression with the gradient descent approach
+o Be able to compare the analytical expressions for OLS and Ridge regression with the gradient descent approach
 o Explore the role of the learning rate in the gradient descent approach and the hyperparameter $\lambda$ in Ridge regression
 o Scale the data properly
 
@@ -59,7 +59,7 @@ y_mean = ?
 y_centered = ?
 !ec
 
-Fill in the necessary details.
+Fill in the necessary details. Do we need to center the $y$-values? 
 
 After this preprocessing, each column of $\bm{X}_{\mathrm{norm}}$ has mean zero and standard deviation $1$
 and $\bm{y}_{\mathrm{centered}}$ has mean 0. This makes the optimization landscape
@@ -72,11 +72,13 @@ same scale).
 Find the gradients for OLS and Ridge regression using the mean-squared error as cost/loss function. 
 
 
-===== Exercise 3, use the analytical formulae for OLS and Ridge regression to find the optimal paramters $\bm{\theta}$ =====
+===== Exercise 3, using the analytical formulae for OLS and Ridge regression to find the optimal paramters $\bm{\theta}$ =====
 
 !bc pycod
 # Set regularization parameter, either a single value or a vector of values
-lambda = ?
+# Note that lambda is a python keyword. The lambda keyword is used to create small, single-expression functions without a formal name. These are often called "anonymous functions" or "lambda functions."
+lam = ?
+
 
 # Analytical form for OLS and Ridge solution: theta_Ridge = (X^T X + lambda * I)^{-1} X^T y and theta_OLS = (X^T X)^{-1} X^T y
 I = np.eye(n_features)
@@ -120,18 +122,8 @@ num_iters = 1000
 # Initialize weights for gradient descent
 theta = np.zeros(n_features)
 
-# Arrays to store history for plotting
-cost_history = np.zeros(num_iters)
-
 # Gradient descent loop
-m = n_samples  # number of examples
 for t in range(num_iters):
-    # Compute prediction error
-    error = X_norm.dot(theta) - y_centered 
-    # Compute cost for OLS and Ridge (MSE + regularization for Ridge) for monitoring
-    cost_OLS = ?
-    cost_Ridge = ?
-    cost_history[t] = ?
     # Compute gradients for OSL and Ridge
     grad_OLS = ?
     grad_Ridge = ?
@@ -147,10 +139,12 @@ print("Gradient Descent Ridge coefficients:", theta_gdRidge)
 !ec
 
 === 4a) ===
-Discuss the results as function of the learning rate parameters and the number of iterations.
+Write first a gradient descent code for OLS only using the above template.
+Discuss the results as function of the learning rate parameters and the number of iterations
 
 === 4b) ===
-Try to add a stopping parameter as function of the number iterations. How would you define a stopping criterion? 
+Write then a similar code for Ridge regression using the above template.
+Try to add a stopping parameter as function of the number iterations and the difference between the new and old $\theta$ values. How would you define a stopping criterion? 
 
 
 ===== Exercise 5, Ridge regression and a new Synthetic Dataset =====

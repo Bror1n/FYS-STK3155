@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercisesweek37';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project 1 on Machine Learning, deadline October 6 (midnight), 2025" href="project1.html" />
+    <link rel="next" title="Week 37: Gradient descent methods" href="week37.html" />
     <link rel="prev" title="Week 36: Linear Regression and Gradient descent" href="week36.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -230,6 +230,9 @@
 <li class="toctree-l1"><a class="reference internal" href="exercisesweek36.html">Exercises week 36</a></li>
 <li class="toctree-l1"><a class="reference internal" href="week36.html">Week 36: Linear Regression and Gradient descent</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises week 37</a></li>
+<li class="toctree-l1"><a class="reference internal" href="week37.html">Week 37: Gradient descent methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesweek38.html">Exercises week 38</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesweek39.html">Exercises week 39</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -389,7 +392,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-calculate-the-gradients">Exercise 2, calculate the gradients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-use-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">Exercise 3, use the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-using-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">Exercise 3, using the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3a)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">3b)</a></li>
 </ul>
@@ -422,7 +425,7 @@ doconce format html exercisesweek37.do.txt  -->
 <p>After having completed these exercises you will have:</p>
 <ol class="arabic simple">
 <li><p>Your own code for the implementation of the simplest gradient descent approach applied to ordinary least squares (OLS) and Ridge regression</p></li>
-<li><p>Be able to compare the analytical expressions for OLS and Rudge regression with the gradient descent approach</p></li>
+<li><p>Be able to compare the analytical expressions for OLS and Ridge regression with the gradient descent approach</p></li>
 <li><p>Explore the role of the learning rate in the gradient descent approach and the hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> in Ridge regression</p></li>
 <li><p>Scale the data properly</p></li>
 </ol>
@@ -470,7 +473,7 @@ y_centered = ?
 </div>
 </div>
 </div>
-<p>Fill in the necessary details.</p>
+<p>Fill in the necessary details. Do we need to center the <span class="math notranslate nohighlight">\(y\)</span>-values?</p>
 <p>After this preprocessing, each column of <span class="math notranslate nohighlight">\(\boldsymbol{X}_{\mathrm{norm}}\)</span> has mean zero and standard deviation <span class="math notranslate nohighlight">\(1\)</span>
 and <span class="math notranslate nohighlight">\(\boldsymbol{y}_{\mathrm{centered}}\)</span> has mean 0. This makes the optimization landscape
 nicer and ensures the regularization penalty <span class="math notranslate nohighlight">\(\lambda \sum_j
@@ -482,12 +485,14 @@ same scale).</p>
 <h2>Exercise 2, calculate the gradients<a class="headerlink" href="#exercise-2-calculate-the-gradients" title="Link to this heading">#</a></h2>
 <p>Find the gradients for OLS and Ridge regression using the mean-squared error as cost/loss function.</p>
 </section>
-<section id="exercise-3-use-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">
-<h2>Exercise 3, use the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span><a class="headerlink" href="#exercise-3-use-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta" title="Link to this heading">#</a></h2>
+<section id="exercise-3-using-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">
+<h2>Exercise 3, using the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span><a class="headerlink" href="#exercise-3-using-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Set regularization parameter, either a single value or a vector of values
-lambda = ?
+# Note that lambda is a python keyword. The lambda keyword is used to create small, single-expression functions without a formal name. These are often called &quot;anonymous functions&quot; or &quot;lambda functions.&quot;
+lam = ?
+
 
 # Analytical form for OLS and Ridge solution: theta_Ridge = (X^T X + lambda * I)^{-1} X^T y and theta_OLS = (X^T X)^{-1} X^T y
 I = np.eye(n_features)
@@ -533,18 +538,8 @@ num_iters = 1000
 # Initialize weights for gradient descent
 theta = np.zeros(n_features)
 
-# Arrays to store history for plotting
-cost_history = np.zeros(num_iters)
-
 # Gradient descent loop
-m = n_samples  # number of examples
 for t in range(num_iters):
-    # Compute prediction error
-    error = X_norm.dot(theta) - y_centered 
-    # Compute cost for OLS and Ridge (MSE + regularization for Ridge) for monitoring
-    cost_OLS = ?
-    cost_Ridge = ?
-    cost_history[t] = ?
     # Compute gradients for OSL and Ridge
     grad_OLS = ?
     grad_Ridge = ?
@@ -563,11 +558,13 @@ print(&quot;Gradient Descent Ridge coefficients:&quot;, theta_gdRidge)
 </div>
 <section id="id2">
 <h3>4a)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>Discuss the results as function of the learning rate parameters and the number of iterations.</p>
+<p>Write first a gradient descent code for OLS only using the above template.
+Discuss the results as function of the learning rate parameters and the number of iterations</p>
 </section>
 <section id="id3">
 <h3>4b)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>Try to add a stopping parameter as function of the number iterations. How would you define a stopping criterion?</p>
+<p>Write then a similar code for Ridge regression using the above template.
+Try to add a stopping parameter as function of the number iterations and the difference between the new and old <span class="math notranslate nohighlight">\(\theta\)</span> values. How would you define a stopping criterion?</p>
 </section>
 </section>
 <section id="exercise-5-ridge-regression-and-a-new-synthetic-dataset">
@@ -666,11 +663,11 @@ should be in the same ballpark.  Which method (OLS or Ridge) gives the best resu
       </div>
     </a>
     <a class="right-next"
-       href="project1.html"
+       href="week37.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Project 1 on Machine Learning, deadline October 6 (midnight), 2025</p>
+        <p class="prev-next-title">Week 37: Gradient descent methods</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -697,7 +694,7 @@ should be in the same ballpark.  Which method (OLS or Ridge) gives the best resu
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-calculate-the-gradients">Exercise 2, calculate the gradients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-use-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">Exercise 3, use the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-using-the-analytical-formulae-for-ols-and-ridge-regression-to-find-the-optimal-paramters-boldsymbol-theta">Exercise 3, using the analytical formulae for OLS and Ridge regression to find the optimal paramters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3a)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">3b)</a></li>
 </ul>
