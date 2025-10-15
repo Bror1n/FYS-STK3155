@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercisesweek41';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project 1 on Machine Learning, deadline October 6 (midnight), 2025" href="project1.html" />
+    <link rel="next" title="Week 42 Constructing a Neural Network code with examples" href="week42.html" />
     <link rel="prev" title="Week 41 Neural networks and constructing a neural network code" href="week41.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -246,10 +246,22 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="week42.html">Week 42 Constructing a Neural Network code with examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesweek42.html">Exercises week 42</a></li>
+
+
+
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="project1.html">Project 1 on Machine Learning, deadline October 6 (midnight), 2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project2.html">Project 2 on Machine Learning, deadline November 10 (Midnight)</a></li>
 </ul>
 
     </div>
@@ -597,7 +609,7 @@ doconce format html exercisesweek41.do.txt  -->
 </div>
 </div>
 </div>
-<p><strong>d)</strong> Why is a neural network with no activation functions always mathematically equivelent to a neural network with only one layer?</p>
+<p><strong>d)</strong> Why is a neural network with no activation functions mathematically equivelent to(can be reduced to) a neural network with only one layer?</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise-4-custom-activation-for-each-layer">
 <h1>Exercise 4 - Custom activation for each layer<a class="headerlink" href="#exercise-4-custom-activation-for-each-layer" title="Link to this heading">#</a></h1>
@@ -654,7 +666,7 @@ doconce format html exercisesweek41.do.txt  -->
 </div>
 </div>
 </div>
-<p><strong>b)</strong> Make a matrix of inputs with the shape (number of features, number of inputs), you choose the number of inputs and features per input. Then complete the function <code class="docutils literal notranslate"><span class="pre">feed_forward_batch</span></code> so that you can process this matrix of inputs with only one matrix multiplication and one broadcasted vector addition per layer. (Hint: You will only need to swap two variable around from your previous implementation, but remember to test that you get the same results for equivelent inputs!)</p>
+<p><strong>b)</strong> Make a matrix of inputs with the shape (number of inputs, number of features), you choose the number of inputs and features per input. Then complete the function <code class="docutils literal notranslate"><span class="pre">feed_forward_batch</span></code> so that you can process this matrix of inputs with only one matrix multiplication and one broadcasted vector addition per layer. (Hint: You will only need to swap two variable around from your previous implementation, but remember to test that you get the same results for equivelent inputs!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -670,7 +682,7 @@ doconce format html exercisesweek41.do.txt  -->
 </div>
 </div>
 </div>
-<p><strong>c)</strong> Create and evaluate a neural network with 4 inputs and layers with output sizes 12, 10, 3 and activations ReLU, ReLU, softmax.</p>
+<p><strong>c)</strong> Create and evaluate a neural network with 4 input features, and layers with output sizes 12, 10, 3 and activations ReLU, ReLU, softmax.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network_input_size</span> <span class="o">=</span> <span class="o">...</span>
@@ -865,11 +877,11 @@ doconce format html exercisesweek41.do.txt  -->
       </div>
     </a>
     <a class="right-next"
-       href="project1.html"
+       href="week42.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Project 1 on Machine Learning, deadline October 6 (midnight), 2025</p>
+        <p class="prev-next-title">Week 42 Constructing a Neural Network code with examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
